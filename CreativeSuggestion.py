@@ -3,8 +3,6 @@ import numpy as np
 import geocoder
 import time 
 import sys 
-from Weatherin import Weather
-from googletrans import Translator
 from IndexChecka import findIndex
 
 #Welcome message with weather inputs
@@ -60,7 +58,7 @@ for i in range(len(animation)):
     time.sleep(0.1)
     sys.stdout.write("\r" + animation[i % len(animation)])
     sys.stdout.flush()
-print('Complete!')
+print('\nComplete!')
 print("\n")
 
 #Checks temperature to see if the activities should be outdoor or indoor
@@ -71,23 +69,26 @@ elif 0 < temp < 10:
 else:
     resp = "It is quite cold today, let's find some nice indoor activities"
 
-print("It is currently {} and {} in humidity[0-100], and around {}°C in {}, but it feels like {}°C. {}.".format(weather_desc, humidity, temp, city, tempFeels, resp))
+print("It is currently {} and {} in humidity[0-100], and around {}°C in {}, and it feels like {}°C. {}.".format(weather_desc, humidity, temp, city, tempFeels, resp))
 
 #2D numpy array of suggestions
-Data = np.array([["Work on music / beats"], 
-        ["Read", "the bible", "the Lord of the Rings", "When", "Ketamine for TR-D", "Metazoa", "a new book"],
+import numpy as np
+Data = np.array([["Create a beat / work on beat"], 
+        ["Read", "the bible", "the Lord of the Rings", "When", "Ketamine for TR-D", "Metazoa", "Can't hurt me", "Sapiens", "Invisble Women", "a new book"],
         ["Code a program that", 'measures the degree of variation in your diet', 'measures the time you have spent at a website', 'is a simple shooter game', 'can chat with you'],
         ["Clean your room"],
-        ["Message or call", "Johanne", "Pappa", "Mamma", "Dom", "Emilie", "Eirik", "Sindre", "Ingvild", "André","Henrik"],
+        ["Message or call", "Johanne", "Pappa", "Eyosiyas", "Lisa", "Emilie", "Bror", "Eivind", "Mamma", "Dom", "Emilie", "Eirik", "Sindre", "Ingvild", "André","Henrik","Hermann"],
         ["Meditate"],
         ["Do yoga"],
-        ["Do a challenge like", "an extreme morning routine", "ice cold shower or swim", "running a 10km", "extreme workout"],
-        ["Play", "BO4", "CODM", "Vallheim", "Chess", "AmongUs", "CODM Warzone"]], dtype = object)
+        ["Do a challenge like", "an extreme morning routine", "ice cold shower or swim", "running a 10km", "extreme workout", "nasal work"],
+        ["Play", "BO4", "CODM", "Vallheim", "Chess", "AmongUs", "CODM Warzone", "Table tennis", "Tennis"],
+        ["Go climbing or buldring"],
+        ["Explore a cave"]], dtype = object)
 
 
 #Loop that randomly selects one of the items in the list and removes previously selected items
 inp = "B"
-tot = 8
+tot = len(Data)
 
 while inp != "Done":
     num = random.choices(Data[:], weights = WeightList)
